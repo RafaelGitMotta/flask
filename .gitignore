@@ -1,0 +1,4 @@
+.Ambiente_Virtual
+
+*.pyc
+__pycache__
