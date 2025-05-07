@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        {% include 'nav.html' %}
+               
+        <div class="row mt-4">
+
+            <h3>Lista de Contato</h3>
+            
+            <form method="get" class="row">
+                <div class="col-8">
+                    <input type="text" name="pesquisa" class="form-control">
+                </div>
+                <div class="col-2 mt-1">
+
+                    <button type="submit" class="btn-primary">Pesquisa
+                    </button>  
+                    
+                    
+                </div>
+                
+            </form>
+            <div class="col-12">
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Assunto</th>
+                            <th>E-mail confirmado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in context['dados']%}
+                        <tr>
+                            <td>{{linha.nome}}</td>
+                            <td>{{linha.email}}</td>
+                            <td>{{linha.assunto}}</td>
+
+                            <td>
+                                {% if linha.respondido == 1 %}
+                                    Sim
+                                {% else %}
+                                    Não
+                                {% endif %}
+                            </td>
+                            <td><a href="{{ url_for('contatoDetail',id= linha.id)}}"><img src="{{ url_for('static', filename='img/mao.png')}}" style="width: 20px"></a></td>
+
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+
+            </div>
+        </div>
+         
+    </div>
+    
+{% endblock %}
