@@ -1,7 +1,20 @@
-from estudo import db # Importando o db = SQLAlchemy(app) do arquivo __init__.py
-from sqlalchemy import delete
+from estudo import db, login_manager # Importando o db = SQLAlchemy(app) do arquivo __init__.py
 
 from datetime import datetime
+
+from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer,primary_key=True) 
+    nome = db.Column(db.String, nullable=True)
+    sobrenome = db.Column(db.String, nullable=True)
+    email = db.Column(db.String, nullable=True)
+    senha = db.Column(db.String, nullable=True)
+
 
 # Criando a tabela de Contatos (herda do banco de dados da classe Models). Isso informa ao flask que essa classe um Banco de Dados.
 class Contato(db.Model):
