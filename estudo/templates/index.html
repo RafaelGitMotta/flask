@@ -1,16 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'nav.html' %}
-    <div>
-        <h3>Estudo</h3>
-        <h5>@campcodebrasil</h5>
-        <p>Bem Vindos a aula de Flask</p>
-        
-        <img src="{{ url_for('static', filename='img/mao.png')}}">
-    </div>
+
+<div class="container">
+    {% include 'nav.html' %}
+
+    <hr>
     
+    <div>
+                         
+        {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->
+
+            <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}
+            </span><!--Mostra o usuário Logado-->
+            <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"--> 
+
+        {%else %}<!--Se não-->
+
+        <form action="" method="post" class="row mt-4 p-4 rounde border shadow"><!--Formulário de Login-->
+        
+        <h3>Faça seu Login</h3>
+
+        {{form.csrf_token}}
+
+        {{form.email.label()}} <!--Campo para inserir o email para login-->
+        {{form.email(class="form-control")}}
+
+        {{form.senha.label()}}<!--Campo para inserir a senha para login-->
+        {{form.senha(class="form-control")}}
+
+        {{form.btnSubmit(class="btn btn-primary col-12 mt-3")}} <!--Botão da Comfirmação-->
+
+        <div class="col-12 mt-4">Não tem cadastro? <a href="{{url_for('cadastro')}}">Faça aqui o seu Cadastro</a></div>
+
+        {% endif %}
+        <hr>
+        
+        <img src="{{ url_for('static', filename='img/Bardok.png')}}">
+
+       
+    </div>
+
     <div>
         <p><a href="{{url_for('contato')}}">Contato</a></p>
         <a href="{{url_for('contatoLista')}}">Contato - Lista</a>
     </div>
+</div>
 {% endblock %}

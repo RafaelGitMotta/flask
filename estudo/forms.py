@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField #Campo tipo (texto, botao, campo de senha)
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
-from estudo import db
+from estudo import db, bcrypt
 from estudo.models import Contato, User
 
 class UserForm(FlaskForm):
@@ -10,13 +10,13 @@ class UserForm(FlaskForm):
     sobrenome = StringField('Sobrenome',validators=[DataRequired()])
     email = StringField('E-mail',validators=[DataRequired(), Email()])
     senha = PasswordField('Senha',validators=[DataRequired()])
-    confirmacao_senha = PasswordField('Senha',validators=[DataRequired(), EqualTo('senha')])
+    confirmacao_senha = PasswordField('Confirmação Senha',validators=[DataRequired(), EqualTo('senha')])
     btnSubmit = SubmitField('Cadastrar')
 
     def validade_email(self, email):
         if User.query.filter(email=email.data).first():
             return ValidationError('Usuário já cadastro com esse E-mail!!!')
-        
+#___________________________________________________        
     def save(self):
         senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8'))
         user = User(
@@ -29,7 +29,33 @@ class UserForm(FlaskForm):
         db.session.add(user)
         db.session.commit()
         return user
-        
+#___________________________________________________
+
+#Criando o campo de Formulário de Login   
+ 
+class LoginForm(FlaskForm):
+    
+    email = StringField('E-mail',validators=[DataRequired(), Email()])
+    senha = PasswordField('Senha',validators=[DataRequired()])
+    btnSubmit = SubmitField('Login')
+
+    def login(self):
+        #Recuperar o usuário do e-mail
+        user =User.query.filter_by(email=self.email.data).first()
+
+        #Verificar se a senha é válida
+        if user:
+            if bcrypt.check_password_hash(user.senha, self.senha.data.encode('utf-8')): 
+                return user #Retorna o Usuário
+            else:
+                raise Exception('Senha Incorreta!!!')
+                
+        else:
+            raise Exception('Usuário não encontrado!!!')
+#____________________________________________________
+
+#Criando o Formulário de Contato
+
 class ContatoForm(FlaskForm):
     nome = StringField('Nome',validators=[DataRequired()])
     email = StringField('E-mail',validators=[DataRequired(), Email()])
