@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'nav.html' %} 
+<h1>Agendamentos</h1>
+    {% if agendamentos %}
+    <ul>
+        {% for agendamento in agendamentos %}
+        <li>{{ agendamento.nome }} - {{ agendamento.data_hora.strftime('%d/%m/%Y %H:%M') }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum agendamento realizado ainda.</p>
+    {% endif %}
+    <p><a href="{{ url_for('agendar') }}">Voltar para Agendar</a></p>
+{% endblock %}

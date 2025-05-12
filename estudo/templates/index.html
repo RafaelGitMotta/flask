@@ -30,19 +30,21 @@
 
         {{form.btnSubmit(class="btn btn-primary col-12 mt-3")}} <!--Botão da Comfirmação-->
 
-        <div class="col-12 mt-4">Não tem cadastro? <a href="{{url_for('cadastro')}}">Faça aqui o seu Cadastro</a></div>
-
         {% endif %}
-        <hr>
-        
-        <img src="{{ url_for('static', filename='img/Bardok.png')}}">
-
-       
-    </div>
-
-    <div>
-        <p><a href="{{url_for('contato')}}">Contato</a></p>
-        <a href="{{url_for('contatoLista')}}">Contato - Lista</a>
     </div>
 </div>
 {% endblock %}
+
+        <!-- Não faz parte do programa somente para estudo.
+        <div class="col-12 mt-4">Não tem cadastro? <a href="{{url_for('cadastro')}}">Faça aqui o seu Cadastro</a></div>
+ 
+        <div class="col-12 mt-4">Gostaria de <a href="{{url_for('agendar')}}">Agendar?</a></div>
+
+        
+        <hr>
+        
+        <img src="{{ url_for('static', filename='img/Univesp.jpg')}}">
+
+       
+    
+    

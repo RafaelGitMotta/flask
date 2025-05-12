@@ -28,3 +28,14 @@ class Contato(db.Model):
     assunto = db.Column(db.String, nullable=True)
     mensagem = db.Column(db.String, nullable=True)
     respondido = db.Column(db.Integer,default = 0)
+
+class Agendamento(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(80), nullable=False)
+    data_hora = db.Column(db.DateTime, nullable=False)
+
+    def __repr__(self):
+        return f"<Agendamento {self.nome} em {self.data_hora}>"
+# Crie as tabelas no banco de dados (será executado na primeira vez)
+#with app.app_context():
+#    db.create_all()

@@ -1,3 +1,5 @@
+# ARQUIVO DE INICIALIÇÃO DA APLICAÇÃO.
+
 from flask import Flask #A partir da biblioteca flask importe a classe Flask
 
 from flask_sqlalchemy import SQLAlchemy
@@ -16,9 +18,9 @@ load_dotenv('.env')
 
 
 app = Flask(__name__) # Flask(Main)
- # Start no aplicativo, (_name_) Pega o nome do aplicativo a partir do nome do arquivo no qual se está trabalhando no caso o arquivo "main".
+ # Inicia no aplicativo, (_name_) Pega o nome do aplicativo a partir do nome do arquivo no qual se está trabalhando no caso o arquivo "main".
 
-#Definindo a onde vai ficar o banco de dados:(Sem Variáveis de Ambiente)
+#O comanado abaixo definea onde vai ficar o banco de dados:(Sem Variáveis de Ambiente)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 #Com Váriáveis de Ambiente
@@ -29,14 +31,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQKALCHEMY_TRACK_MODIFICATIONS'] = False 
 # Desativa a checagem automatica de modifiacoes
 
+
+#________________________________________________
 #(Sem Variáveis de Ambiente)
 #app.config['SECRET_KEY'] = '12345werefewfwefw-fsffefffe67890'
 
-#___________________________________________________
-
 #(Com Váriaveis de Ambiente)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-# Definindo a várial de banco de dados
+
+#===================================================#
+
+# Definindo a váriavel de banco de dados
 
 db = SQLAlchemy(app)
 # Para nossso aplicativo eu quero criar o banco de dados descrito nas configurações acima

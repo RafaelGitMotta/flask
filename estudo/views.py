@@ -1,9 +1,11 @@
 from estudo import app, db
 
 from flask import render_template, url_for, request, redirect
+from datetime import datetime
+
 from flask_login import login_user, logout_user, current_user
 
-from estudo.models import Contato
+from estudo.models import Contato, Agendamento
 
 # Importação dos formulários criados no arquivo forms.py (Fomulário de Contato, Usuário e Login)
 
@@ -20,6 +22,37 @@ def homepage(): # Função que vai renderizar a página
         login_user(user,remember=True)
 
     return render_template('index.html', form=form)
+#____________________________________________________
+
+@app.route('/agendar', methods=['GET', 'POST'])
+def agendar():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        data_str = request.form['data']
+        hora_str = request.form['hora']
+
+        try:
+            data_hora_str = f"{data_str} {hora_str}"
+            data_hora = datetime.strptime(data_hora_str, '%Y-%m-%d %H:%M')
+
+            novo_agendamento = Agendamento(nome=nome, data_hora=data_hora)
+            db.session.add(novo_agendamento)
+            db.session.commit()  # Salva as alterações no banco de dados
+            return redirect(url_for('listar_agendamentos'))
+        except ValueError:
+            erro = "Formato de data ou hora inválido."
+            return render_template('agendar.html', erro=erro)
+
+    return render_template('agendar.html')
+
+@app.route('/agendamentos')
+def listar_agendamentos():
+    agendamentos = Agendamento.query.order_by(Agendamento.data_hora).all()
+    return render_template('listar_agendamentos.html', agendamentos=agendamentos)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 #____________________________________________________
 
 #CADASTRO
