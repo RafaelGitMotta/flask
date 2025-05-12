@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'nav.html' %} 
-<h1>Agende seu Horário</h1>
+
     {% if erro %}
         <p style="color: red;">{{ erro }}</p>
     {% endif %}
+
+<div class="container">
+    <h1>Agende seu Horário</h1>
+    <i class="bi bi-7-square-fill"></i>
+<hr>
     <form method="POST">
         <div>
             <label for="nome">Nome:</label>
@@ -24,4 +29,5 @@
         <button type="submit">Agendar</button>
     </form>
     <p><a href="{{ url_for('listar_agendamentos') }}">Ver Agendamentos</a></p>
+</div>
 {% endblock %}

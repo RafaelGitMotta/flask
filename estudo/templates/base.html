@@ -1,16 +1,27 @@
- <!-- Este é um arquivo que ser como base para os demais arquivos para evitar a repetição de linhas de código -->
+ <!-- Este é um arquivo que ser como base para os demais arquivos para evitar a repetição de linhas de código em HTML-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Biblioteca de Icones do Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Contatos</title>
+ 
+<!-- Biblioteca de formatação do Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
+<body>
+    
     <section class="container-fluid mt-2">
     {% block content %} {% endblock %}
     </section> 
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    
 </body>
 </html>

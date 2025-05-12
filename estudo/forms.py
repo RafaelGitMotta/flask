@@ -3,7 +3,9 @@ from wtforms import StringField, SubmitField, PasswordField #Campo tipo (texto, 
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 
 from estudo import db, bcrypt
-from estudo.models import Contato, User
+from estudo.models import User
+
+#____________________________________________________
 
 class UserForm(FlaskForm):
     nome = StringField('Nome',validators=[DataRequired()])
@@ -54,24 +56,6 @@ class LoginForm(FlaskForm):
             raise Exception('Usuário não encontrado!!!')
 #____________________________________________________
 
-#Criando o Formulário de Contato
 
-class ContatoForm(FlaskForm):
-    nome = StringField('Nome',validators=[DataRequired()])
-    email = StringField('E-mail',validators=[DataRequired(), Email()])
-    assunto = StringField('Assunto',validators=[DataRequired()])
-    mensagem = StringField('Mensagem',validators=[DataRequired()])
-    btnSubmit = SubmitField('Enviar',validators=[DataRequired()])
-
-    def save(self):
-        contato = Contato(
-        nome = self.nome.data,
-        email = self.email.data,
-        assunto = self.assunto.data,
-        mensagem = self.mensagem.data
-        )
-
-        db.session.add(contato)
-        db.session.commit()
 
 

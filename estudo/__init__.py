@@ -55,4 +55,3 @@ bcrypt = Bcrypt(app)
 
 
 from estudo.views import homepage
-from estudo.models import Contato

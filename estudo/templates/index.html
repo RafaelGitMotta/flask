@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'nav.html' %}
 
 <div class="container">
-    {% include 'nav.html' %}
-
-    <hr>
     
+        
     <div>
-                         
+                               
         {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->
 
             <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}
             </span><!--Mostra o usuário Logado-->
+            
             <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"--> 
 
         {%else %}<!--Se não-->
@@ -19,7 +19,7 @@
         <form action="" method="post" class="row mt-4 p-4 rounde border shadow"><!--Formulário de Login-->
         
         <h3>Faça seu Login</h3>
-
+        
         {{form.csrf_token}}
 
         {{form.email.label()}} <!--Campo para inserir o email para login-->
