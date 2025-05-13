@@ -20,8 +20,17 @@ def homepage(): # Função que vai renderizar a página
     if form.validate_on_submit():
         user = form.login() #recupera o usuário
         login_user(user,remember=True)
-
+                
     return render_template('index.html', form=form)
+
+@app.route('/cadastro/', methods=['GET','POST'])
+def cadastro():
+    form = UserForm()
+    if form.validate_on_submit():
+        user=form.save()
+        login_user(user,remember=True)
+        return redirect(url_for('homepage'))
+    return render_template('cadastro.html', form = form)
 #____________________________________________________
 
 @app.route('/agendar', methods=['GET', 'POST'])
@@ -44,6 +53,7 @@ def agendar():
             return render_template('agendar.html', erro=erro)
 
     return render_template('agendar.html')
+#_______________________________________________________________________
 
 @app.route('/agendamentos')
 def listar_agendamentos():
@@ -62,3 +72,6 @@ def logout():
     return redirect(url_for('homepage'))
 
 #___________________________________________________
+
+
+

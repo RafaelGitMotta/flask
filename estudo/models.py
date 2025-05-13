@@ -1,19 +1,33 @@
-from estudo import db, login_manager # Importando o db = SQLAlchemy(app) do arquivo __init__.py
+# O Arquivo Models é responsável  por fazer a comunicação da aplicação flask com o banco de dados.
+#Criando os bancos de dados em Python que posteriormente serão convertidos em linguagem SQL pelo próprio Python. 
+
+from estudo import db, login_manager # Importando a variável db = SQLAlchemy(app) e a variável login_manager do arquivo __init__.py
 
 from datetime import datetime
 
-from flask_login import UserMixin
+from flask_login import UserMixin #UserMixin é o modelo que será usado para 
 
+#----------------------------------------------------
+
+#Essa função recupera o usuário para fazer a sessão de login
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
+def load_user(user_id):# recebe um id
+    return User.query.get(user_id)# retorna o usuário logado
+#____________________________________________________
+# Banco de Dados dos Usuários
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin):# o Usermixin informa para o aplicatico que essa tabela é para controle de login, no caso será usado o campo de email para controle de login, mas poderia ser escolhido qualquer um dos cfampos abaixo
     id = db.Column(db.Integer,primary_key=True) 
     nome = db.Column(db.String, nullable=True)
     sobrenome = db.Column(db.String, nullable=True)
     email = db.Column(db.String, nullable=True)
     senha = db.Column(db.String, nullable=True)
+
+# Após escrever no arquivo models.py o banco de dados acima é preciso criar esse modelo no banco de dados, primeiro é preciso montar o banco de dados usando o seguinte comando no terminal:flask db migrate
+#Depois é preciso fazer o upload desse banco de dados montado usando o seguinte comando no terminal:flask db upgrade 
+
+#Depois é preciso criar o formulário no forms.py
+#__________________________________________________
 
 
 # Criando a tabela de Contatos (herda do banco de dados da classe Models). Isso informa ao flask que essa classe um Banco de Dados.

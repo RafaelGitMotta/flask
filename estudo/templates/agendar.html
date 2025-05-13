@@ -6,23 +6,24 @@
         <p style="color: red;">{{ erro }}</p>
     {% endif %}
 
-<div class="container">
+<div class="container" >
+
     <h1>Agende seu Horário</h1>
-    <i class="bi bi-7-square-fill"></i>
+    
 <hr>
-    <form method="POST">
+    <form method="POST" class="col-4 mt-4 p-4 rounde border shadow">
         <div>
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+            <input type="text" id="nome" name="{{current_user.nome}}" required>
         </div>
         <br>
         <div>
-            <label for="data">Data (AAAA-MM-DD):</label>
+            <label for="data">Data:</label>
             <input type="date" id="data" name="data" required>
         </div>
         <br>
         <div>
-            <label for="hora">Hora (HH:MM):</label>
+            <label for="hora">Hora:</label>
             <input type="time" id="hora" name="hora" required>
         </div>
         <br>

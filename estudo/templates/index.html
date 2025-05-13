@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'nav.html' %}
+
 
 <div class="container">
     
+    {% include 'nav.html' %}
         
-    <div>
-                               
+    <div>                               
         {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->
+        <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}</span><!--Mostra o usuário Logado-->
 
-            <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}
-            </span><!--Mostra o usuário Logado-->
-            
-            <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"--> 
+        <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"-->
 
         {%else %}<!--Se não-->
 
-        <form action="" method="post" class="row mt-4 p-4 rounde border shadow"><!--Formulário de Login-->
+        <!--Formulário de Login-->
+
+        <form action="" method="post" class="row mt-4 p-4 rounde border shadow">
         
         <h3>Faça seu Login</h3>
         
@@ -28,10 +28,17 @@
         {{form.senha.label()}}<!--Campo para inserir a senha para login-->
         {{form.senha(class="form-control")}}
 
-        {{form.btnSubmit(class="btn btn-primary col-12 mt-3")}} <!--Botão da Comfirmação-->
+        {{form.btnSubmit(class="btn btn-primary col-12 mt-3")}} <!--Botão da Comfirmação-->  
 
-        {% endif %}
-    </div>
+            <div>
+            <a href="{{url_for('cadastro')}}" >Faça seu Cadastro</a>
+            </div>
+            
+        </form>
+
+        {% endif %}     
+      
+    </div>     
 </div>
 {% endblock %}
 

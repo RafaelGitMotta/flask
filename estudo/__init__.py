@@ -44,14 +44,18 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 # Definindo a váriavel de banco de dados
 
 db = SQLAlchemy(app)
-# Para nossso aplicativo eu quero criar o banco de dados descrito nas configurações acima
+# Para nossso aplicativo eu quero criar o banco de dados descrito nas configurações acima. Essa variável será usada pelo arquivo Models.py
 
 #Definindo a aplicativo de migrate para atualização.
 migrate = Migrate(app,db)
 
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
-bcrypt = Bcrypt(app)
+#Configuração do Login
+login_manager = LoginManager(app) #a variável login_manager recebe o LoginManager (adiciona o aplicativo). Essa variável será usada pelo arquivo Models.py
 
+# Controle de acesso a diferentes partes da aplicação.
+login_manager.login_view = 'homepage'
+
+#Configuração do Bcrypt, responsável por encriptar a senha do usuário
+bcrypt = Bcrypt(app)
 
 from estudo.views import homepage
