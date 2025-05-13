@@ -18,7 +18,7 @@ class UserForm(FlaskForm):
     sobrenome = StringField('Sobrenome',validators=[DataRequired()])
     email = StringField('E-mail',validators=[DataRequired(), Email()])
     senha = PasswordField('Senha',validators=[DataRequired()])
-    confirmacao_senha = PasswordField('Senha',validators=[DataRequired(), EqualTo('senha')])
+    confirmacao_senha = PasswordField('Confirme a Senha',validators=[DataRequired(), EqualTo('senha')])
     btnSubmit = SubmitField('Cadastrar')
 
     #Função de validação de email: def validate_"aqui o campo que se deseja validar"
