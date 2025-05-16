@@ -16,9 +16,9 @@ from flask_bcrypt import Bcrypt
 import os
 load_dotenv('.env')
 
-
-app = Flask(__name__) # Flask(Main)
- # Inicia no aplicativo, (_name_) Pega o nome do aplicativo a partir do nome do arquivo no qual se está trabalhando no caso o arquivo "main".
+#app representa a nossa aplicação flask
+app = Flask(__name__) # app = Flask(Main)
+ # a variável app recebe o Flask e (__name__) indica para flask o modulo da aplicação principal que no caso é o arquivo "main.py".
 
 #O comanado abaixo definea onde vai ficar o banco de dados:(Sem Variáveis de Ambiente)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'

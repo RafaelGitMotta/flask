@@ -1,6 +1,9 @@
 from estudo import app, db
 
 from flask import render_template, url_for, request, redirect
+
+#render template: renderiza arquivos HTML
+
 from datetime import datetime
 
 from flask_login import login_user, logout_user, current_user
