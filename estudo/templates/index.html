@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
 <div class="container">
    
     
@@ -21,20 +20,14 @@
         
         <h3>Faça seu Login</h3>
         
-        {{form.csrf_token}}
+        
 
-        {{form.email.label()}} <!--Campo para inserir o email para login-->
-        {{form.email(class="form-control")}}
-
-        {{form.senha.label()}}<!--Campo para inserir a senha para login-->
-        {{form.senha(class="form-control")}}
-
-        {{form.btnSubmit(class="btn btn-primary col-12 mt-3")}} <!--Botão da Comfirmação-->  
-
+        
             <div>
             <a href="{{url_for('cadastro')}}" >Faça seu Cadastro</a>
             </div>
-            
+            <a href="{{url_for('login')}}" class="btn btn-dark">Login</a>
+
         </form>
 
         {% endif %}     

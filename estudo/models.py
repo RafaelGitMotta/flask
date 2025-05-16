@@ -6,6 +6,9 @@ from estudo import db, login_manager # Importando a variável db = SQLAlchemy(ap
 from datetime import datetime
 
 from flask_login import UserMixin #UserMixin é o modelo que será usado para 
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt()
 
 #----------------------------------------------------
 
@@ -20,8 +23,14 @@ class User(db.Model, UserMixin):# o Usermixin informa para o aplicatico que essa
     id = db.Column(db.Integer,primary_key=True) 
     nome = db.Column(db.String, nullable=True)
     sobrenome = db.Column(db.String, nullable=True)
-    email = db.Column(db.String, nullable=True)
-    senha = db.Column(db.String, nullable=True)
+    email = db.Column(db.String(150), nullable=True)
+    password_hash = db.Column(db.String, nullable=True)
+
+    def set_password(self, password):
+        self.password_hash  = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    def check_password(self, password):
+        return bcrypt.check_password_hash(self.password_hash, password)
 
 # Após escrever no arquivo models.py o banco de dados acima é preciso criar esse modelo no banco de dados, primeiro é preciso montar o banco de dados usando o seguinte comando no terminal:flask db migrate
 #Depois é preciso fazer o upload desse banco de dados montado usando o seguinte comando no terminal:flask db upgrade 
