@@ -29,7 +29,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user)
             flash('Login realizado com sucesso!', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('homepage'))
         else:
             flash('Email ou senha inválidos', 'danger')
     return render_template('login.html', form=form)
@@ -54,6 +54,7 @@ def cadastro():
 #____________________________________________________
 
 @app.route('/agendar', methods=['GET', 'POST'])
+@login_required
 def agendar():
     if request.method == 'POST':
         nome = request.form['nome']

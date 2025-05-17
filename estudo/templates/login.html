@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'nav.html' %} 
-<form method="POST">
+{% include 'nav.html' %}
+
+<div class="container" >
+<form method="POST" class="row mt-4 p-4 rounde border shadow">
     {{ form.hidden_tag() }}
     <div>
-        {{ form.email.label }} {{ form.email }}
+        <p>{{ form.email.label }} {{ form.email }}</p>    
+    
+       <p> {{ form.password.label }} {{ form.password }}</p>
     </div>
     <div>
-        {{ form.password.label }} {{ form.password }}
-    </div>
-    <div>
+        
         {{ form.btnSubmit }}
     </div>
 </form>
 
 {% endblock %}
+
+</div>

@@ -14,7 +14,7 @@
     <form method="POST" class="col-4 mt-4 p-4 rounde border shadow">
         <div>
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="{{current_user.nome}}" required>
+            <input type="text" id="nome" name="nome" required>
         </div>
         <br>
         <div>
@@ -27,7 +27,8 @@
             <input type="time" id="hora" name="hora" required>
         </div>
         <br>
-        <button type="submit">Agendar</button>
+
+        <button type="submit" class="btn btn-primary">Agendar</button>
     </form>
     <p><a href="{{ url_for('listar_agendamentos') }}">Ver Agendamentos</a></p>
 </div>

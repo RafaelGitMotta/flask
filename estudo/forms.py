@@ -15,10 +15,9 @@ from estudo.models import User
 
 class UserForm(FlaskForm):
     nome = StringField('Nome',validators=[DataRequired()])
-    sobrenome = StringField('Sobrenome',validators=[DataRequired()])
     email = StringField('E-mail',validators=[DataRequired(), Email()])
-    senha = PasswordField('Senha',validators=[DataRequired()])
-    confirmacao_senha = PasswordField('Confirme a Senha',validators=[DataRequired(), EqualTo('senha')])
+    password = PasswordField('Senha',validators=[DataRequired()])
+    confirmacao_senha = PasswordField('Confirme a Senha',validators=[DataRequired(), EqualTo('password')])
     btnSubmit = SubmitField('Cadastrar')
 
     #Função de validação de email: def validate_"aqui o campo que se deseja validar"
@@ -27,12 +26,11 @@ class UserForm(FlaskForm):
             return ValidationError('Usuário já cadastro com esse E-mail!!!')
 
     def save(self):
-        senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8'))
+        password = bcrypt.generate_password_hash(self.password.data.encode('utf-8'))
         user = User(
             nome = self.nome.data,
-            sobrenome = self.sobrenome.data,
             email = self.email.data,
-            senha = senha
+            password = password
         )
 
         db.session.add(user)

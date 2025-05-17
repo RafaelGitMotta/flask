@@ -4,29 +4,35 @@
 <div class="container">
    
     
-    {% include 'nav.html' %}
-        
     <div>                               
-        {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->
+        {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->        
+
         <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}</span><!--Mostra o usuário Logado-->
 
         <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"-->
+    <hr>
+        <h1><img src="\static\img\barbearia.png." class ="mh-100" style="width: 100px; height: 100px;">   Salão e Barbearia Retrô Barber</h1>
+
+        <span class="btn btn-primary mt-4"> <!--Botão Azul-->
+        <i class="bi bi-scissors"></i><!--Icone da Tesoura-->
+        <a href="{{url_for('agendar')}} " class="text-white">Agendar</a><!-- Link para Agenda-->
+        </span>
+        
 
         {%else %}<!--Se não-->
+
+        {% include 'nav.html' %}
 
         <!--Formulário de Login-->
 
         <form action="" method="post" class="row mt-4 p-4 rounde border shadow">
         
-        <h3>Faça seu Login</h3>
+        <h3><a href="{{url_for('login')}}" class="btn btn-primary">Login</a></h3>
         
+        <p>Faça seu login para agendar um horário</p>
+        <p>ou cadastre-se agora mesmo</p>
         
-
-        
-            <div>
-            <a href="{{url_for('cadastro')}}" >Faça seu Cadastro</a>
-            </div>
-            <a href="{{url_for('login')}}" class="btn btn-dark">Login</a>
+            
 
         </form>
 
