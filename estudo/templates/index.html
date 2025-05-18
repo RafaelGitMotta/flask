@@ -34,18 +34,18 @@
         
 
         {%else %}<!--Se não-->
-
+        <div>
         {% include 'nav.html' %}<!--Inclui os botões de navegação do arquivo nav.html usando comando python no html-->
 
         <!--Formulário de Login-->
-        <form action="" method="post" class="row mt-4 p-4 rounde border shadow">
+        <form action="" method="post" class="col -md-7 mt-4 p-4 rounde border shadow">
         
-        <h3><a href="{{url_for('login')}}" class="btn btn-primary">Login</a></h3>
+            <h3><a href="{{url_for('login')}}" class="btn btn-primary">Login</a></h3>
         
-        <p>Faça seu login para agendar um horário</p>
-        <p>ou cadastre-se agora mesmo</p>
+            <p>Faça seu login para agendar um horário</p>
+            <p>ou cadastre-se agora mesmo</p>
         
-            
+        </div>    
 
         </form>
 

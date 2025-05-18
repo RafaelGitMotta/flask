@@ -9,7 +9,7 @@ from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Le
 from estudo import db, bcrypt
 from estudo.models import User
 
-#____________________________________________________
+#___________________________________________________
 
 #Cria o formulário de Usuário
 
@@ -39,7 +39,6 @@ class UserForm(FlaskForm):
    
 
 #Criando o campo de Formulário de Login   
- 
 class LoginForm(FlaskForm):
     
     email = StringField('E-mail',validators=[DataRequired(), Email()])

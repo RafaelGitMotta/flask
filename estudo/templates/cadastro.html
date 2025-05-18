@@ -24,7 +24,12 @@
 
                  {{ form.btnSubmit(class="btn btn-primary col-12 mt-3") }}
         </form> 
+<br>
+        <span class="btn btn-primary"> <!--Botão Azul-->
+            <i class="bi bi-arrow-return-left"></i><!--Icone da Tesoura-->
+            <a href="{{url_for('homepage')}} " class="text-white">Voltar</a><!-- Link para Agenda-->
+        </span>
 
-        <p><a href="{{url_for('homepage')}}">Voltar</a></p>    
+         
     </div>
 {% endblock %}

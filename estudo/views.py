@@ -14,13 +14,14 @@ from estudo.models import Agendamento, User
 
 from estudo.forms import UserForm,LoginForm
 
-#____________________________________________________
+#___________________________________________________
 #PAGINA PRINCIPAL
 
 @app.route('/', methods=['GET','POST']) #rota é todo o caminho depois da / . Se a / estiver sozinha define a URL raiz. (@ define como decoretor)   
 def homepage(): # Função que vai renderizar a página
     return render_template('index.html')
 
+#Rota de Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -33,6 +34,9 @@ def login():
         else:
             flash('Email ou senha inválidos', 'danger')
     return render_template('login.html', form=form)
+
+#___________________________________________________
+# View para p Logout 
 
 @app.route('/logout')
 @login_required
@@ -73,7 +77,7 @@ def agendar():
             return render_template('agendar.html', erro=erro)
 
     return render_template('agendar.html')
-#_______________________________________________________________________
+#___________________________________________________
 
 @app.route('/agendamentos')
 def listar_agendamentos():
@@ -87,8 +91,6 @@ if __name__ == '__main__':
 def sobre():
     return render_template('sobre.html')
 
-#___________________________________________________
-# View para p Logout
-
-
-
+@app.route('/contato', methods=['GET'])
+def contato():
+    return render_template('contato.html')
