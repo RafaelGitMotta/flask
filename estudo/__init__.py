@@ -22,10 +22,10 @@ load_dotenv('.env')
 
 
 #O comanado abaixo definea onde vai ficar o banco de dados:(Sem Variáveis de Ambiente)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 #Com Váriáveis de Ambiente
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 
 # Pegando a URI colocando na configuração de aplicativo e definindo qual que é o caminho e criando o arquivo database.db junto do main
 app.config['SQKALCHEMY_TRACK_MODIFICATIONS'] = False 
@@ -34,10 +34,10 @@ app.config['SQKALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #________________________________________________
 #(Sem Variáveis de Ambiente)
-#app.config['SECRET_KEY'] = '12345werefewfwefw-fsffefffe67890'
+app.config['SECRET_KEY'] = '12345werefewfwefw-fsffefffe67890'
 
 #(Com Váriaveis de Ambiente)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+#app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 #===================================================#
 
