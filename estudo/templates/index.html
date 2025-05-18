@@ -1,30 +1,43 @@
-{% extends 'base.html' %}
+<!--Página Inicial "Home"-->
+
+<!--pemite inserir codigos python entre %-->
+{% extends 'base.html' %}<!--extenção de base.html evita a repecição dos códigos de inicialição HTML-->
 {% block content %}
 
 <div class="container">
    
     
-    <div>                               
-        {% if current_user.is_authenticated %} <!--Se o usuário estiver autenticado faça:-->        
+    <div>
+        <!--Se o usuário estiver autenticado faça:-->                                  
+        {% if current_user.is_authenticated %}      
+        
+        <!--Mostra o usuário Logado-->
+        Bem vindo(a)&nbsp; <span class="btn btn-primary",> {{current_user.nome}} {{current_user.sobrenome}}</span>
+        &nbsp;
 
-        <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}</span><!--Mostra o usuário Logado-->
+        <!--Botao de Sair "Logout"-->
+        <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> 
 
-        <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> <!--Botao de Sair "Logout"-->
-    <hr>
-        <h1><img src="\static\img\iconebarbearia.jpeg" class ="mh-100" style="width: 100px; height: 100px;">   Salão e Barbearia Retrô Barber</h1>
+    <hr><!--Quebra de Linha-->
 
-        <span class="btn btn-primary mt-4"> <!--Botão Azul-->
-        <i class="bi bi-scissors"></i><!--Icone da Tesoura-->
-        <a href="{{url_for('agendar')}} " class="text-white">Agendar</a><!-- Link para Agenda-->
+        <h1><img src="\static\img\iconebarbearia.jpeg" class ="mh-100" style="width: 171px; height: 148px;">   Salão e Barbearia Retrô Barber</h1>
+
+        <!--Botão Azul-->
+        <span class="btn btn-primary mt-4">
+
+        <!--Icone da Tesoura-->
+        <i class="bi bi-book"></i>
+
+        <!-- Link para Agenda-->
+         <a href="{{url_for('agendar')}} " class="text-white">Agendar</a>
         </span>
         
 
         {%else %}<!--Se não-->
 
-        {% include 'nav.html' %}
+        {% include 'nav.html' %}<!--Inclui os botões de navegação do arquivo nav.html usando comando python no html-->
 
         <!--Formulário de Login-->
-
         <form action="" method="post" class="row mt-4 p-4 rounde border shadow">
         
         <h3><a href="{{url_for('login')}}" class="btn btn-primary">Login</a></h3>

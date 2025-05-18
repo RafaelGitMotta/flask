@@ -40,7 +40,6 @@ def logout():
     logout_user()
     flash('Você saiu da conta.', 'info')
     return redirect(url_for('login'))
-
 #____________________________________________________
 
 @app.route('/cadastro/', methods=['GET','POST'])
@@ -83,6 +82,10 @@ def listar_agendamentos():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/sobre', methods=['GET'])
+def sobre():
+    return render_template('sobre.html')
 
 #___________________________________________________
 # View para p Logout
