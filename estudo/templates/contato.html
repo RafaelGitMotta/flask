@@ -1,16 +1,69 @@
-{% extends 'base.html' %}
-{% block content %}
-{% include 'nav.html' %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sobre a Barbearia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-<div class="container px-4 text-center">
-  <div class="col gx-5">
-    <div class="col">
-      <div class="p-3">Telefone (15) 99700-0000</div>
-    </div>
-    <div class="ratio ratio-4x3 rounde border shadow" style="width: 400px; height: 300px; margin: auto;">
-        <iframe src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9993395882775!2d-46.78466474487732!3d-23.53252616429265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceffa1b44ac53d%3A0x6257c586b26048dd!2sAv.%20dos%20Autonomistas%2C%204000%20-%20Vila%20Yara%2C%20Osasco%20-%20SP%2C%2006090-010!5e0!3m2!1spt-BR!2sbr!4v1747592421135!5m2!1spt-BR!2sbr" width="100" height="50" style="border:5;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>Salão e Barbearia Retrô Barber</iframe>
+<body>
+ <!--Barra de Navegação-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">        
+          <div class="container">
+
+            <!--Botão de Home Page-->
+              <a class="navbar-brand, btn btn-dark" href="{{url_for('homepage')}}">Home</a>
+              
+              <!--Botão Azul tag span-->
+              <span class="btn btn-primary"> 
+                
+                <!--Icone de informação-->
+                <i class="bi bi-info-circle"></i>
+
+                <!-- Link para Sobre-->  
+                <a href="{{url_for('sobre')}} " class="text-white">Sobre</a>
+              </span>
+              
+          </div>
+      </nav>
+
+  <div class="container mt-3">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <img src="\static\img\fachada.jpeg" class="img-fluid rounded" alt="Imagem da barbearia" style="width:480x; height: 480px;">
+      </div>
+    
+      <div class="col gx-5 text-center">
+            
+        <div class="col">
+          <p></p>
+          <p><i class ="bi bi-whatsapp" style="color: green;"> WhatsApp </i>(15) 99700-0000</p>
+          
+          <p><i class="bi bi-geo-alt " style="color: crimson;"></i>Av. dos Autonomistas, 4000 - Vila Yara</p> 
+          
+          <p><i class="bi bi-alarm" style="font-size: 1rem; color: cornflowerblue;"></i> </i> Horário de Atendimento <br>
+          Segunda a Sexta 10h às 20h <br>
+          Sábado das 11h às 16h</p>
+            
+        </div>
+
+        <div class="ratio ratio-4x3 rounde border shadow" style="width: 400px; height: 290px; margin: auto;">
+          <iframe src=" https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9993395882775!2d-46.78466474487732!3d-23.53252616429265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceffa1b44ac53d%3A0x6257c586b26048dd!2sAv.%20dos%20Autonomistas%2C%204000%20-%20Vila%20Yara%2C%20Osasco%20-%20SP%2C%2006090-010!5e0!3m2!1spt-BR!2sbr!4v1747592421135!5m2!1spt-BR!2sbr" width="100" height="50" style="border:5;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  <footer class="bg-dark text-white text-center py-2 mt-3" style= width:100% ><p>&copy; 2025 Salão Barbearia Retrô Barber. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
 
-{% endblock %}
+
+
+
+
+
+
+
