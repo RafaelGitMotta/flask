@@ -2,20 +2,20 @@
 {% block content %}
 {% include 'nav.html' %}
 
-<div class="container" >
-<form method="POST" class="row mt-4 p-4 rounde border shadow">
-    {{ form.hidden_tag() }}
-    <div>
-        <p>{{ form.email.label }} {{ form.email }}</p>    
+<div class="bg-black">
     
-       <p> {{ form.password.label }} {{ form.password }}</p>
+        <form method="POST" class="col-3 ms-5 text-white bg-black">
+            {{ form.hidden_tag() }}
+            <div>
+                <p>{{ form.email.label }} {{ form.email }}</p>    
+            
+            <p> {{ form.password.label }} {{ form.password }}</p>
+            </div>
+            <div class="btn btn-primary mb-4 ms-5 bg-black">            
+                {{ form.btnSubmit }}
+            </div>
+        </form>
     </div>
-    <div>
-        
-        {{ form.btnSubmit }}
-    </div>
-</form>
-
+</div>
 {% endblock %}
 
-</div>

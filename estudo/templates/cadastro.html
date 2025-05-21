@@ -1,31 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'nav.html' %} 
+<div class="bg-black">
+<!--Barra de Navegação-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+    <!--Botão de Home Page-->
+    <span class="btn btn btn-dark ms-5">
+      <i class="bi bi-house"></i>
+      <a href="{{url_for('homepage')}} " class="text-white text-end">Home</a>
+    </span>  
+           
+    <span class="btn btn btn-dark">     <!--Botão preto-->
+      <i class="bi bi-info-circle"></i><!--Icone de Info-->
+      <a href="{{url_for('sobre')}} " class="text-white text-end">Sobre
+      </a><!-- Link para Sobre-->
+    </span>
+
+    <span class="btn btn btn-dark">
+        <i class="bi bi-whatsapp"></i> <a href="{{url_for('contato')}}  "class="text-white text-end">Contato </a>
+    </span> 
+    
+    
+    
+  </nav>
+
+
     <div class="container"> 
              
-        <div class="row mt-4">
-            <h3>Cadastro de Usuário</h3>
+        <div class="row mb-1">
+            <h4 class="text-warning">Cadastro de Usuário</h4>
         </div>
 
-        <form action="" method="post" class="row mt-4 p-4 rounde border shadow">
-                 {{ form.csrf_token }}
+        <div class="row">
+            <form action="" method="post" class="col-6 p-4 mt-1 rounde border shadow text-white bg-dark">
+                    {{ form.csrf_token }}
 
-                 {{ form.nome.label() }}
-                 {{ form.nome(class="form-control") }}
+                    {{ form.nome.label() }}
+                    {{ form.nome(class="form-control") }}
 
-                 {{ form.email.label() }}
-                 {{ form.email(class="form-control") }}
+                    {{ form.email.label() }}
+                    {{ form.email(class="form-control") }}
 
-                 {{ form.password.label() }}
-                 {{ form.password(class="form-control") }}
+                    {{ form.password.label() }}
+                    {{ form.password(class="form-control") }}
 
-                 {{ form.confirmacao_senha.label() }}
-                 {{ form.confirmacao_senha(class="form-control") }}
+                    {{ form.confirmacao_senha.label() }}
+                    {{ form.confirmacao_senha(class="form-control") }}
 
-                 {{ form.btnSubmit(class="btn btn-primary col-12 mt-3") }}
-        </form> 
+                    {{ form.btnSubmit(class="btn btn-primary col-12 mt-3") }}
+            </form>
+            <div class="col-md-6 ">
+            <img src="\static\img\cadeira.jpeg" class="img-fluid rounded ms-5 mt-1" alt="Imagem da barbearia" style="width:430x; height: 430px;">
+            </div>
+        </div>
+
 <br>
-        <span class="btn btn-primary"> <!--Botão Azul-->
+        <span class="btn btn-primary mb-3"> <!--Botão Azul-->
             <i class="bi bi-arrow-return-left"></i><!--Icone da Tesoura-->
             <a href="{{url_for('homepage')}} " class="text-white">Voltar</a><!-- Link para Agenda-->
         </span>

@@ -1,37 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- Barra de Navegação-->
-<div class="container">
+<div>
+<!--Barra de Navegação-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 
+    <!--Botão de Home Page-->
+    <span class="btn btn btn-dark ms-5">
+      <i class="bi bi-house"></i>
+      <a href="{{url_for('homepage')}} " class="text-white text-end">Home</a>
+    </span>  
+           
+    <span class="btn btn btn-dark">     <!--Botão preto-->
+      <i class="bi bi-info-circle"></i><!--Icone de Info-->
+      <a href="{{url_for('sobre')}} " class="text-white text-end">Sobre
+      </a><!-- Link para Sobre-->
+    </span>
 
-<!--Botão de Home Page-->
-
-  <a href="{{url_for('homepage')}}" class="btn btn-dark">Home</a>
-  
-
-<!--Botão de Cadastro-->
-
-  <span class="btn btn-primary"> <!--Botão Azul-->
-    <i class="bi bi-scissors"></i><!--Icone da Tesoura-->
-    <a href="{{url_for('cadastro')}} " class="text-white">Cadastre-se</a><!-- Link para Agenda-->
-  </span>
-
-  <span class="btn btn-primary"> <!--Botão Azul-->
-    <i class="bi bi-info-circle"></i><!--Icone da Tesoura-->
-    <a href="{{url_for('sobre')}} " class="text-white">Sobre</a><!-- Link para Agenda-->
-  </span>
-  
-  <a href="contato" class="btn btn-primary text-end">Entre em Contato</a>  
-
-  <hr>
-
-
-<div class = "col-12" > 
+    <span class="btn btn btn-dark">
+        <i class="bi bi-whatsapp"></i> <a href="{{url_for('contato')}}  "class="text-white text-end">Contato </a>
+    </span> 
     
-   <h1><img src="\static\img\iconebarbearia.jpeg" class ="mh-100" style="width: 171px; height: 148px;">   Salão e Barbearia Retrô Barber</h1>
-  </div>  
-
+    <span class="btn btn btn-dark">
+        <i class="bi bi-person-lines-fill"></i> <a href="{{url_for('cadastro')}}  "class="text-white text-end">Cadastre-se</a>
+    </span>
     
+  </nav>
+  <div class="text-center bg-black">
+    <img src="\static\img\bgretro.jpeg" class ="mh-100 ms-5 " style="width: 400px; height:400px;">            
+  </div>
+
+</div>    
 
 {% endblock %}
-

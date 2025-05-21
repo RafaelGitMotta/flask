@@ -2,67 +2,88 @@
 
 <!--pemite inserir codigos python entre %-->
 {% extends 'base.html' %}<!--extenção de base.html evita a repecição dos códigos de inicialição HTML-->
-{% block content %}
-
-<div class="container">
-   
+<body>
     
-    <div>
+
+{% block content %}
+<body>
+    
+
+    <div class = bg-black>
         <!--Se o usuário estiver autenticado faça:-->                                  
         {% if current_user.is_authenticated %}      
-        
-        <!--Mostra o usuário Logado-->
-        Bem vindo(a)&nbsp; <span class="btn btn-primary",> {{current_user.nome}} {{current_user.sobrenome}}</span>
-        &nbsp;
+               
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+            <!--Mostra o usuário Logado-->
+            <span class="btn btn-dark navbar-brand ms-5"><i class="bi bi-person-circle"></i> {{current_user.nome}} {{current_user.sobrenome}}
+            </span>            
 
-        <a href="contato" class="btn btn-primary text-end">Entre em Contato</a>
-        &nbsp; 
+            <span class="btn btn btn-dark">     <!--Botão preto-->
+                <i class="bi bi-info-circle"></i><!--Icone de Info-->
+                <a href="{{url_for('sobre')}} " class="text-white text-end">Sobre</a><!-- Link para Sobre-->
+            </span>
 
-        <span class="btn btn-primary"> <!--Botão Azul-->
-            <i class="bi bi-info-circle"></i><!--Icone da Tesoura-->
-            <a href="{{url_for('sobre')}} " class="text-white">Sobre</a><!-- Link para Agenda-->
-        </span>
-        &nbsp;
-        
-        <!--Botao de Sair "Logout"-->
-        <a href ="{{url_for('logout')}}" class= "btn btn-danger">Sair</a> 
-    
+            <span class="btn btn btn-dark">
+                <i class="bi bi-whatsapp"></i> <a href="{{url_for('contato')}}  "class="text-white text-end">Contato </a>
+            </span>
+            <ul>                 ____________________________________________________________________________________________________________________________________
+            </ul>
+            <span class="btn btn btn-danger">
+                <a href ="{{url_for('logout')}}" class= "nav-link active" aria-current="page" >Sair</a>
+            </span>           
 
-    <hr><!--Quebra de Linha-->
+            <!--Botao de Sair "Logout"
+            <ul class="nav justify-content-start">
+                <a href ="{{url_for('logout')}}" class= "btn btn-danger nav-link active" aria-current="page" >Sair</a>
+                
+            </ul>-->            
+        </nav>
+        <div class="text-center bg-black">
+            <img src="\static\img\bgretro.jpeg" class ="mh-100 ms-5 " style="width: 400px; height:400px;">
 
-        <h1><img src="\static\img\iconebarbearia.jpeg" class ="mh-100" style="width: 171px; height: 148px;">   Salão e Barbearia Retrô Barber</h1>
 
-        <!--Botão Azul-->
-        <span class="btn btn-primary mt-4">
+            
+        </div>
+        <div class="bg-black">
+            <!--Botão Azul-->
+            <span class="btn btn-primary mt-4  mb-5 ms-5 bg-black">
 
-        <!--Icone da Tesoura-->
-        <i class="bi bi-book"></i>
-
-        <!-- Link para Agenda-->
-         <a href="{{url_for('agendar')}} " class="text-white">Agendar</a>
-        </span>
+            <!--Icone da Tesoura-->
+            <i class="bi bi-book "></i>
+            <!-- Link para Agenda-->
+            <a href="{{url_for('agendar')}} " class="text-white">Agendar</a>
+            </span>
+        </div>
+      
+<!------------------------------------------------->
 
         {%else %}<!--Se não-->
-        <div>
+
         <!--Inclui os botões de navegação do arquivo nav.html usando comando python no html-->
+            {% include 'nav.html' %}
+            <div>
+            <!--Botão Azul-->
+            <span class="btn btn-primary mt-4  mb-5 ms-5 bg-black">
 
-        <!--Formulário de Login-->
-        <form action="" method="post" class="col -md-7 mt-4 p-4 rounde border shadow">
-        
-            <h3><a href="{{url_for('login')}}" class="btn btn-primary">Login</a></h3>
-        
-            <p>Faça seu login para agendar um horário</p>
-            <p>ou cadastre-se agora mesmo</p>
-        
-        </div>    
+            <!--Icone da Tesoura-->
+            <i class="bi bi-book "></i>
+            <!-- Link para Agenda-->
+            <a href="{{url_for('login')}} " class="text-white">Login</a>
+            
+            </span>
+            <div class="bg-black"><p class="text-white">Faça seu login para agendar um horário</p></h2>
+            </div>
+                  
+        {% endif %} 
+    </div>
+            
+<footer class="bg-dark text-white text-center   position-absolute bottom-0" style= width:100%;><p>&copy; 2025 Salão Barbearia Retrô Barber. Todos os direitos reservados.</p>
+</footer> 
 
-        </form>
-
-        {% endif %}     
-      
-    </div>     
-</div>
 {% endblock %}
+
+    
 
         <!-- Não faz parte do programa somente para estudo.
         <div class="col-12 mt-4">Não tem cadastro? <a href="{{url_for('cadastro')}}">Faça aqui o seu Cadastro</a></div>

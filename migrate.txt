@@ -3,3 +3,4 @@ flask db migrate -m "digite aqui o nome da atualizacao "
 
 # Atualiza efetivamente o banco de dados.
 flask db upgrade 
+withe
