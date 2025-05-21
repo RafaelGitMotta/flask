@@ -1,35 +1,69 @@
 {% extends 'base.html' %}
 {% block content %}
-{% include 'nav.html' %} 
+<div>
+<!--Barra de Navegação-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+    <!--Botão de Home Page-->
+    <span class="btn btn btn-dark ms-5">
+      <i class="bi bi-house"></i>
+      <a href="{{url_for('homepage')}} " class="text-white text-end">Home</a>
+    </span>  
+           
+    <span class="btn btn btn-dark">     <!--Botão preto-->
+      <i class="bi bi-info-circle"></i><!--Icone de Info-->
+      <a href="{{url_for('sobre')}} " class="text-white text-end">Sobre
+      </a><!-- Link para Sobre-->
+    </span>
+
+    <span class="btn btn btn-dark">
+        <i class="bi bi-whatsapp"></i> <a href="{{url_for('contato')}}  "class="text-white text-end">Contato </a>
+    </span> 
+    
+    <span class="btn btn btn-dark">
+        <i class="bi bi-person-lines-fill"></i> <a href="{{url_for('cadastro')}}  "class="text-white text-end">Cadastre-se</a>
+    </span>
+    
+  </nav>
 
     {% if erro %}
         <p style="color: red;">{{ erro }}</p>
     {% endif %}
+<div class="container"> 
+    <div class="row mb-1">
+        <div class="col-6">
+            <h1>Agende seu Horário</h1>
+                    
+            <form method="POST" class="mt-4 p-4 rounde border shadow">
+                <div class="col-4">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <br>
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+                <br>
+                <div>
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
+                <br>
 
-<div class="container" >
-
-    <h1>Agende seu Horário</h1>
-    
-<hr>
-    <form method="POST" class="col-4 mt-4 p-4 rounde border shadow">
-        <div>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+                <button type="submit" class="btn btn-primary">Agendar</button>
+            </form>
+            <p><a class="btn btn-primary mt-3" href="{{ url_for('listar_agendamentos') }}">Ver Agendamentos</a></p>
         </div>
-        <br>
-        <div>
-            <label for="data">Data:</label>
-            <input type="date" id="data" name="data" required>
+        <div class="col-6">>
+            <img src="\static\img\corte.jpeg" class="img-fluid rounded ms-5 mt-1" alt="Imagem da barbearia" style="width:430x; height: 430px;">
+                </div>
         </div>
-        <br>
-        <div>
-            <label for="hora">Hora:</label>
-            <input type="time" id="hora" name="hora" required>
-        </div>
-        <br>
-
-        <button type="submit" class="btn btn-primary">Agendar</button>
-    </form>
-    <p><a href="{{ url_for('listar_agendamentos') }}">Ver Agendamentos</a></p>
+    </div>
 </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Salão Barbearia Retrô Barber. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
