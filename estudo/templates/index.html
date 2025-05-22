@@ -2,11 +2,11 @@
 
 <!--pemite inserir codigos python entre %-->
 {% extends 'base.html' %}<!--extenção de base.html evita a repecição dos códigos de inicialição HTML-->
-<body>
+
     
 
 {% block content %}
-<body>
+<body class="bg-black">
     
 
     <div class = bg-black>
@@ -72,8 +72,8 @@
             <a href="{{url_for('login')}} " class="text-white">Login</a>
             
             </span>
-            <div class="bg-black"><p class="text-white">Faça seu login para agendar um horário</p></h2>
-            </div>
+            <p class="text-white ms-5 mb-5 mt-3">Faça seu login para agendar um horário</p>
+            
                   
         {% endif %} 
     </div>

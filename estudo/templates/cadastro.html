@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<body class="bg-black">
 <div class="bg-black">
 <!--Barra de Navegação-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -54,12 +55,14 @@
             </div>
         </div>
 
-<br>
-        <span class="btn btn-primary mb-3"> <!--Botão Azul-->
+        <span class="btn btn-primary mt-3"> <!--Botão Azul-->
             <i class="bi bi-arrow-return-left"></i><!--Icone da Tesoura-->
             <a href="{{url_for('homepage')}} " class="text-white">Voltar</a><!-- Link para Agenda-->
         </span>
-
          
     </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 Salão Barbearia Retrô Barber. Todos os direitos reservados.</p>
+</footer>
+</body>
 {% endblock %}
